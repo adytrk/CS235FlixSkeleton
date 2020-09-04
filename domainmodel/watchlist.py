@@ -9,11 +9,11 @@ class WatchList:
     def watchlist(self):
         return self.__watchlist;
 
-    def add_movie(self, movie : Movie):
+    def add_movie(self, movie: Movie):
         if movie not in self.__watchlist:
             self.__watchlist.append(movie)
 
-    def remove_movie(self, movie : Movie):
+    def remove_movie(self, movie: Movie):
         if movie in self.__watchlist:
             self.__watchlist.remove(movie)
 
@@ -44,5 +44,33 @@ class WatchList:
             raise StopIteration
 
 
+class TestWatchlistMethods:
 
+    def test_init(self):
+        watchlist = WatchList()
+        watchlist.add_movie(Movie("Moana", 2016))
+        assert watchlist.size() == 1
+        watchlist.remove_movie(Movie("Moana", 2016))
+        assert watchlist.size() == 0
 
+        watchlist = WatchList()
+        watchlist.add_movie(Movie("Moana", 2016))
+        movie = watchlist.select_movie_to_watch(100)
+        assert movie is None
+
+        watchlist = WatchList()
+        watchlist.add_movie(Movie("Moana", 2016))
+        movie = watchlist.select_movie_to_watch(100)
+        assert movie is None
+
+        watchlist = WatchList()
+        watchlist.add_movie(Movie("Moana", 2016))
+        movie = watchlist.select_movie_to_watch(0)
+        assert movie == "<Movie Moana, 2016>"
+
+        watchlist = WatchList()
+        assert watchlist.size() == 0
+        watchlist.add_movie(Movie("Moana", 2016))
+        watchlist.add_movie(Movie("Ice Age", 2002))
+        watchlist.add_movie(Movie("Guardians of the Galaxy", 2012))
+        assert watchlist.first_movie_in_watchlist() == "<Movie Moana, 2016>"
