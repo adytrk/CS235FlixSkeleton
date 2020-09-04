@@ -13,6 +13,12 @@ class Movie:
         self.__runtime_minutes = None
         self.__time = None
 
+        self.__rank = None
+        self.__rating = None
+        self.__votes = None
+        self.__revenue_millions = None
+        self.__metascore = None
+
         if title == "" or type(title) is not str:
             self.__title = None
         else:
@@ -81,6 +87,47 @@ class Movie:
             raise ValueError
         else:
             self.__time = time
+
+    @property
+    def rank(self):
+        return self.__rank
+
+    @rank.setter
+    def rank(self, x):
+        self.__rank = x
+
+    @property
+    def rating(self):
+        return self.__rating
+
+    @rating.setter
+    def rating(self, x):
+        self.__rating = x
+
+    @property
+    def votes(self):
+        return self.__time
+
+    @votes.setter
+    def votes(self, x):
+        self.__votes = x
+
+    @property
+    def revenue_millions(self):
+        return self.__revenue_millions
+
+    @revenue_millions.setter
+    def revenue_millions(self, x):
+        self.__revenue_millions = x
+
+    @property
+    def metascore(self):
+        return self.__metascore
+
+    @metascore.setter
+    def metascore(self, x):
+        self.__metascore = x
+
 
     def __repr__(self):
         return f"<Movie {self.__title}, {self.__release_year}>"

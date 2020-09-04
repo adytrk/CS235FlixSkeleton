@@ -57,3 +57,17 @@ class MovieFileCSVReader:
                     if Genre(genre) not in self.__dataset_of_genres:
                         self.__dataset_of_genres.add(Genre(genre))
 
+                rank = row['Rank']
+                if rank > 0:
+                    movie.rank = rank
+                rating = row['Rating']
+                if  0 <= rating <= 10:
+                    movie.rating = rating
+                votes = row['Votes']
+                movie.votes = int(votes)
+                revenue_millions = row['Revenue (Millions)']
+                movie.revenue_millions = revenue_millions
+                metascore = row['Metascore']
+                if 0<= metascore <= 100:
+                    movie.metascore = metascore
+
